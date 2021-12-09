@@ -16,6 +16,7 @@ namespace CmdWrapper
         public FormMain()
         {
             InitializeComponent();
+            //subscribe to the std output received event
             StdOutputReceiver.StdOutputReceived+= StdOutputReceiverOnStdOutputReceived;
         }
 
