@@ -29,6 +29,11 @@ namespace CmdWrapper
                 iniInfo.parser.WriteFile(ConfigPath, iniInfo.iniData, Encoding.UTF8);
             }
         }
+        
+        public static bool DebugMode
+        {
+            get => bool.Parse(GetIniInfo().iniData["global"]["debug_mode"]);
+        }
 
         private static List<Option> _options;
 

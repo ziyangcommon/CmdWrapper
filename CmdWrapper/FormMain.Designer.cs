@@ -29,7 +29,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tabControl = new System.Windows.Forms.TabControl();
+            this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.SuspendLayout();
             // 
             // tabControl
@@ -38,9 +40,15 @@
             this.tabControl.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(741, 732);
+            this.tabControl.Size = new System.Drawing.Size(741, 550);
             this.tabControl.TabIndex = 0;
             this.tabControl.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.tabControl_MouseDoubleClick);
+            // 
+            // notifyIcon
+            // 
+            this.notifyIcon.Text = "CmdWrapper";
+            this.notifyIcon.Visible = true;
+            this.notifyIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_MouseDoubleClick);
             // 
             // FormMain
             // 
@@ -56,6 +64,8 @@
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.ResumeLayout(false);
         }
+
+        private System.Windows.Forms.NotifyIcon notifyIcon;
 
         private System.Windows.Forms.TabControl tabControl;
 

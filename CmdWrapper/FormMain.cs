@@ -114,5 +114,17 @@ namespace CmdWrapper
             CreateTabPage(option);
             AppConfig.SaveOption();
         }
+
+        private void notifyIcon_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if(this.Visible)
+            {
+                this.Hide();
+            }
+            else
+            {
+                this.Show();
+            }
+        }
     }
 }
