@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Text;
@@ -7,9 +8,16 @@ namespace CmdWrapper
 {
     public static class CmdHelper
     {
+        public static readonly Dictionary<string,Process> WorkingProcesses = new Dictionary<string,Process>();
         public static void RunExternalExe(Option option)
         {
+            if (WorkingProcesses.ContainsKey(option.Id))
+            {
+                WorkingProcesses[option.Id].Kill();
+                WorkingProcesses.Remove(option.Id);
+            }
             var process = new Process();
+            WorkingProcesses.Add(option.Id,process);
 
             process.StartInfo.FileName = "cmd.exe";
 
@@ -23,7 +31,7 @@ namespace CmdWrapper
             process.OutputDataReceived += (sender, args) =>
             {
                 StdOutputReceiver.SendStdOutput(option,args.Data);
-            }; 
+            };
 
             string stdError = null;
             try

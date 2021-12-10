@@ -33,8 +33,7 @@ namespace CmdWrapper
                 }
             }
         }
-
-
+        
         private void TxtWorkDirOnTextChanged(object sender, EventArgs e)
         {
             var textBox = sender as TextBox;
@@ -113,6 +112,7 @@ namespace CmdWrapper
             };
             AppConfig.Options.Add(option);
             CreateTabPage(option);
+            AppConfig.SaveOption();
         }
     }
 }

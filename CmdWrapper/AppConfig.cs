@@ -30,33 +30,16 @@ namespace CmdWrapper
             }
         }
 
-        private static ObservableCollection<Option> _options;
+        private static List<Option> _options;
 
-        public static ObservableCollection<Option> Options
+        public static List<Option> Options
         {
             get
             {
                 var iniInfo = GetIniInfo();
                 var iniData = iniInfo.iniData;
-                if (_options == null)
-                {
-                    _options = new ObservableCollection<Option>();
-                    _options.CollectionChanged += (sender, args) =>
-                    {
-                        var ini = GetIniInfo();
-                        for (var i = 1; i <= _options.Count; i++)
-                        {
-                            var option = _options[i - 1];
-                            var sectionName = $"option{i}";
-                            iniInfo.iniData[sectionName]["name"] = option.Name;
-                            iniInfo.iniData[sectionName]["cmd"] = option.Command;
-                            iniInfo.iniData[sectionName]["working_dir"] = option.WorkingDirectory;
-                        }
-
-                        iniInfo.parser.WriteFile(ConfigPath, iniInfo.iniData, Encoding.UTF8);
-                    };
-                }
-
+                if (_options != null) return _options;
+                _options = new List<Option>();
                 foreach (var section in iniData.Sections)
                 {
                     const string prefix = "option";
@@ -65,6 +48,7 @@ namespace CmdWrapper
                     {
                         Name = iniData[section.SectionName]["name"],
                         Command = iniData[section.SectionName]["cmd"],
+                        Parameters = iniData[section.SectionName]["parameters"],
                         WorkingDirectory = iniData[section.SectionName]["working_dir"],
                     };
                     _options.Add(option);
@@ -77,12 +61,25 @@ namespace CmdWrapper
         public static void SaveOption()
         {
             var iniInfo = GetIniInfo();
+            var removeKeys = new List<string>();
+            foreach (var section in iniInfo.iniData.Sections)
+            {
+                const string prefix = "option";
+                if (!section.SectionName.StartsWith(prefix)) continue;
+                removeKeys.Add(section.SectionName);
+            }
+
+            foreach (var removeKey in removeKeys)
+            {
+                iniInfo.iniData.Sections.RemoveSection(removeKey);
+            }
             for (var i = 1; i <= _options.Count; i++)
             {
                 var option = _options[i - 1];
                 var sectionName = $"option{i}";
                 iniInfo.iniData[sectionName]["name"] = option.Name;
                 iniInfo.iniData[sectionName]["cmd"] = option.Command;
+                iniInfo.iniData[sectionName]["parameters"] = option.Parameters;
                 iniInfo.iniData[sectionName]["working_dir"] = option.WorkingDirectory;
             }
 
@@ -98,6 +95,7 @@ namespace CmdWrapper
         public string Id { get; set; }= Guid.NewGuid().ToString();
         public string Name { get; set; }
         public string Command { get; set; }
+        public string Parameters { get; set; }
         public string WorkingDirectory { get; set; }
     }
 }
