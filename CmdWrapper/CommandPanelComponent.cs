@@ -14,8 +14,10 @@ namespace CmdWrapper
         }
 
         public delegate void RemoveTabPageEventHandler(Option sender, EventArgs e);
+        public delegate void OnOptionNameChangedEventHandler(Option sender);
 
         public event RemoveTabPageEventHandler RemoveTabPageClick;
+        public event OnOptionNameChangedEventHandler OptionNameChanged;
 
         private void SendRemoveTabPageClick(Option sender, EventArgs e)
         {
@@ -120,6 +122,7 @@ namespace CmdWrapper
         private void txtName_TextChanged(object sender, EventArgs e)
         {
             this.Option.Name = this.txtName.Text;
+            this.OnOptionNameChanged(this.Option);
         }
 
         private void txtCommand_TextChanged(object sender, EventArgs e)
@@ -135,6 +138,11 @@ namespace CmdWrapper
         private void txtWorkingDirectory_TextChanged(object sender, EventArgs e)
         {
             this.Option.WorkingDirectory = this.txtWorkingDirectory.Text;
+        }
+
+        protected virtual void OnOptionNameChanged(Option sender)
+        {
+            OptionNameChanged?.Invoke(sender);
         }
     }
 }

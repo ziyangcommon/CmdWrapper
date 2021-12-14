@@ -42,6 +42,13 @@ namespace CmdWrapper
                     AppConfig.SaveOption();
                 }
             };
+            commandPanel.OptionNameChanged += sender =>
+            {
+#if DEBUG
+                Console.WriteLine(option.Name);
+#endif
+                tabPage.Text = sender.Name;
+            };
             tabPage.Controls.Add(commandPanel);
 
             tabControl.TabPages.Add(tabPage);

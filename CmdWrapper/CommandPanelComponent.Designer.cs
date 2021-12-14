@@ -66,6 +66,7 @@ namespace CmdWrapper
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(652, 26);
             this.txtName.TabIndex = 1;
+            this.txtName.TextChanged += new System.EventHandler(this.txtName_TextChanged);
             // 
             // lblCommand
             // 
@@ -82,6 +83,7 @@ namespace CmdWrapper
             this.txtCommand.Name = "txtCommand";
             this.txtCommand.Size = new System.Drawing.Size(621, 26);
             this.txtCommand.TabIndex = 3;
+            this.txtCommand.TextChanged += new System.EventHandler(this.txtCommand_TextChanged);
             // 
             // lblParameters
             // 
@@ -98,6 +100,7 @@ namespace CmdWrapper
             this.txtParameters.Name = "txtParameters";
             this.txtParameters.Size = new System.Drawing.Size(621, 26);
             this.txtParameters.TabIndex = 5;
+            this.txtParameters.TextChanged += new System.EventHandler(this.txtParameters_TextChanged);
             // 
             // lblWorkingDirectory
             // 
@@ -114,6 +117,7 @@ namespace CmdWrapper
             this.txtWorkingDirectory.Name = "txtWorkingDirectory";
             this.txtWorkingDirectory.Size = new System.Drawing.Size(575, 26);
             this.txtWorkingDirectory.TabIndex = 7;
+            this.txtWorkingDirectory.TextChanged += new System.EventHandler(this.txtWorkingDirectory_TextChanged);
             // 
             // btnRun
             // 
