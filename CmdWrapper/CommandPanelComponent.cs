@@ -38,6 +38,7 @@ namespace CmdWrapper
 
         private void StdOutputReceiverOnProcessExited(Option option, string output)
         {
+            if (option != this.Option || option.Id != this.Option.Id) return;
             this.Invoke(new Action(() =>
             {
                 if (string.IsNullOrEmpty(output)) return;
@@ -49,6 +50,7 @@ namespace CmdWrapper
 
         private void StdOutputReceiverOnStdErrorReceived(Option option, string output)
         {
+            if (option != this.Option || option.Id != this.Option.Id) return;
             this.BeginInvoke(new Action(delegate
             {
                 if (string.IsNullOrEmpty(output)) return;
@@ -60,6 +62,7 @@ namespace CmdWrapper
 
         private void StdOutputReceiverOnStdOutputReceived(Option option, string output)
         {
+            if (option != this.Option || option.Id != this.Option.Id) return;
             this.BeginInvoke(new Action(delegate
             {
                 if (string.IsNullOrEmpty(output)) return;
