@@ -32,6 +32,10 @@ namespace CmdWrapper
             {
                 StdOutputReceiver.SendStdOutput(option,args.Data);
             };
+            process.ErrorDataReceived+= (sender, args) =>
+            {
+                StdOutputReceiver.SendStdErrorReceived(option,args.Data);
+            };
 
             string stdError = null;
             try

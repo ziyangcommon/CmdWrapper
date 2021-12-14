@@ -15,25 +15,8 @@ namespace CmdWrapper
         public FormMain()
         {
             InitializeComponent();
-            //subscribe to the std output received event
-            StdOutputReceiver.StdOutputReceived+= StdOutputReceiverOnStdOutputReceived;
         }
 
-        private void StdOutputReceiverOnStdOutputReceived(Option option,string output)
-        {
-            foreach (TabPage page in this.tabControl.TabPages)
-            {
-                var txt=page.Controls.OfType<RichTextBox>().FirstOrDefault(x => (x.Tag as Option)?.Id == option.Id);
-                if (txt != null)
-                {
-                    this.BeginInvoke(new Action(delegate
-                    {
-                        txt.Text += output;
-                    }));
-                }
-            }
-        }
-        
         private void TxtWorkDirOnTextChanged(object sender, EventArgs e)
         {
             var textBox = sender as TextBox;

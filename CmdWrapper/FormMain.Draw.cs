@@ -28,6 +28,7 @@ namespace CmdWrapper
             commandPanel.Location = new System.Drawing.Point(3, 3);
             commandPanel.Margin = new System.Windows.Forms.Padding(2, 0, 0, 0);
             commandPanel.Size = new System.Drawing.Size(720, 520);
+            commandPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             commandPanel.RemoveTabPageClick += (sender, args) =>
             {
                 if (MessageBox.Show("Are you sure you want to remove this option?", "Remove Option",

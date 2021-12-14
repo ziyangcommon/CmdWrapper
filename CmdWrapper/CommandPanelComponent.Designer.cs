@@ -43,7 +43,7 @@ namespace CmdWrapper
             this.btnStop = new System.Windows.Forms.Button();
             this.btnRemove = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox = new System.Windows.Forms.RichTextBox();
             this.lblOutput = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -151,20 +151,22 @@ namespace CmdWrapper
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // richTextBox1
+            // richTextBox
             // 
-            this.richTextBox1.BackColor = System.Drawing.Color.Black;
-            this.richTextBox1.ForeColor = System.Drawing.Color.White;
-            this.richTextBox1.Location = new System.Drawing.Point(3, 225);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(712, 290);
-            this.richTextBox1.TabIndex = 12;
-            this.richTextBox1.Text = "";
+            this.richTextBox.BackColor = System.Drawing.Color.Black;
+            this.richTextBox.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.richTextBox.ForeColor = System.Drawing.Color.White;
+            this.richTextBox.Location = new System.Drawing.Point(0, 216);
+            this.richTextBox.Name = "richTextBox";
+            this.richTextBox.Size = new System.Drawing.Size(718, 302);
+            this.richTextBox.TabIndex = 12;
+            this.richTextBox.Text = "";
             // 
             // lblOutput
             // 
             this.lblOutput.AutoSize = true;
-            this.lblOutput.Location = new System.Drawing.Point(6, 202);
+            this.lblOutput.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.lblOutput.Location = new System.Drawing.Point(0, 196);
             this.lblOutput.Name = "lblOutput";
             this.lblOutput.Size = new System.Drawing.Size(60, 20);
             this.lblOutput.TabIndex = 13;
@@ -176,7 +178,7 @@ namespace CmdWrapper
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.lblOutput);
-            this.Controls.Add(this.richTextBox1);
+            this.Controls.Add(this.richTextBox);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnRemove);
             this.Controls.Add(this.btnStop);
@@ -189,12 +191,13 @@ namespace CmdWrapper
             this.Controls.Add(this.lblCommand);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.lblName);
-            this.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (134)));
+            this.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "CommandPanelComponent";
             this.Size = new System.Drawing.Size(718, 518);
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         private System.Windows.Forms.Label lblName;
@@ -212,7 +215,7 @@ namespace CmdWrapper
         private System.Windows.Forms.Button btnStop;
         private System.Windows.Forms.Button btnRemove;
         private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox richTextBox;
         private System.Windows.Forms.Label lblOutput;
     }
 }
