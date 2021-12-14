@@ -15,6 +15,7 @@ namespace CmdWrapper
         public FormMain()
         {
             InitializeComponent();
+            this.notifyIcon.Visible = AppConfig.ShowNotifyIcon;
         }
 
         private void TxtWorkDirOnTextChanged(object sender, EventArgs e)
