@@ -13,7 +13,11 @@ namespace CmdWrapper
         {
             if (WorkingProcesses.ContainsKey(option.Id))
             {
-                WorkingProcesses[option.Id].Kill();
+                var existingProcess = WorkingProcesses[option.Id];
+                if (!existingProcess.HasExited)
+                {
+                    existingProcess.Kill();
+                };
                 WorkingProcesses.Remove(option.Id);
             }
             var process = new Process();
@@ -45,8 +49,8 @@ namespace CmdWrapper
             try
             {
                 process.Start();
-                process.StandardInput.WriteLine($"cd {option.WorkingDirectory}");
-                process.StandardInput.WriteLine(option.Command);
+                process.StandardInput.WriteLine($"cd /d {option.WorkingDirectory}");
+                process.StandardInput.WriteLine($"{option.Command} {option.Parameters}");
                 process.BeginOutputReadLine();
                 stdError = process.StandardError.ReadToEnd();
                 process.WaitForExit();

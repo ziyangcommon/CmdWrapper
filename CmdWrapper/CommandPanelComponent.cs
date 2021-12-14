@@ -12,7 +12,7 @@ namespace CmdWrapper
             this.Option = option;
             this.InitData();
         }
-        
+
         public delegate void RemoveTabPageEventHandler(Option sender, EventArgs e);
 
         public event RemoveTabPageEventHandler RemoveTabPageClick;
@@ -41,7 +41,7 @@ namespace CmdWrapper
             this.Invoke(new Action(() =>
             {
                 if (string.IsNullOrEmpty(output)) return;
-                this.richTextBox.SelectionColor= Color.White;
+                this.richTextBox.SelectionColor = Color.White;
                 this.richTextBox.SelectionBackColor = Color.Black;
                 SetOutputText(output);
             }));
@@ -52,7 +52,7 @@ namespace CmdWrapper
             this.BeginInvoke(new Action(delegate
             {
                 if (string.IsNullOrEmpty(output)) return;
-                this.richTextBox.SelectionColor= Color.Red;
+                this.richTextBox.SelectionColor = Color.Red;
                 this.richTextBox.SelectionBackColor = Color.Black;
                 SetOutputText(output);
             }));
@@ -63,7 +63,7 @@ namespace CmdWrapper
             this.BeginInvoke(new Action(delegate
             {
                 if (string.IsNullOrEmpty(output)) return;
-                this.richTextBox.SelectionColor= Color.GreenYellow;
+                this.richTextBox.SelectionColor = Color.GreenYellow;
                 this.richTextBox.SelectionBackColor = Color.Black;
                 SetOutputText(output);
             }));
@@ -81,18 +81,13 @@ namespace CmdWrapper
             this.richTextBox.ScrollToCaret();
             this.richTextBox.ResumeLayout();
         }
-        
+
         public Option Option { get; set; }
 
         private void btnRun_Click(object sender, EventArgs e)
         {
-            var action = new Action(delegate
-            {
-                CmdHelper.RunExternalExe(Option);
-            });
-            action.BeginInvoke(delegate(IAsyncResult ar)
-            {
-            }, null);
+            var action = new Action(delegate { CmdHelper.RunExternalExe(Option); });
+            action.BeginInvoke(delegate(IAsyncResult ar) { }, null);
         }
 
         private void btnStop_Click(object sender, EventArgs e)
@@ -100,7 +95,7 @@ namespace CmdWrapper
             if (CmdHelper.WorkingProcesses.ContainsKey(Option.Id))
             {
                 var process = CmdHelper.WorkingProcesses[Option.Id];
-                process.Kill();
+                if (!process.HasExited) process.Kill();
             }
         }
 
@@ -111,12 +106,32 @@ namespace CmdWrapper
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            this.Option.Name=this.txtName.Text;
+            this.Option.Name = this.txtName.Text;
             this.Option.Command = this.txtCommand.Text;
             this.Option.Parameters = this.txtParameters.Text;
             this.Option.WorkingDirectory = this.txtWorkingDirectory.Text;
             AppConfig.SaveOption();
             MessageBox.Show("Save Success", "Save", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void txtName_TextChanged(object sender, EventArgs e)
+        {
+            this.Option.Name = this.txtName.Text;
+        }
+
+        private void txtCommand_TextChanged(object sender, EventArgs e)
+        {
+            this.Option.Command = this.txtCommand.Text;
+        }
+
+        private void txtParameters_TextChanged(object sender, EventArgs e)
+        {
+            this.Option.Parameters = this.txtParameters.Text;
+        }
+
+        private void txtWorkingDirectory_TextChanged(object sender, EventArgs e)
+        {
+            this.Option.WorkingDirectory = this.txtWorkingDirectory.Text;
         }
     }
 }
