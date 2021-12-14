@@ -45,11 +45,15 @@ namespace CmdWrapper
             this.btnSave = new System.Windows.Forms.Button();
             this.richTextBox = new System.Windows.Forms.RichTextBox();
             this.lblOutput = new System.Windows.Forms.Label();
+            this.panelTop = new System.Windows.Forms.Panel();
+            this.panelBottom = new System.Windows.Forms.Panel();
+            this.panelTop.SuspendLayout();
+            this.panelBottom.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblName
             // 
-            this.lblName.Location = new System.Drawing.Point(4, 6);
+            this.lblName.Location = new System.Drawing.Point(4, 12);
             this.lblName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(52, 23);
@@ -58,7 +62,7 @@ namespace CmdWrapper
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(63, 3);
+            this.txtName.Location = new System.Drawing.Point(63, 9);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(652, 26);
             this.txtName.TabIndex = 1;
@@ -66,7 +70,7 @@ namespace CmdWrapper
             // lblCommand
             // 
             this.lblCommand.AutoSize = true;
-            this.lblCommand.Location = new System.Drawing.Point(3, 42);
+            this.lblCommand.Location = new System.Drawing.Point(3, 48);
             this.lblCommand.Name = "lblCommand";
             this.lblCommand.Size = new System.Drawing.Size(82, 20);
             this.lblCommand.TabIndex = 2;
@@ -74,7 +78,7 @@ namespace CmdWrapper
             // 
             // txtCommand
             // 
-            this.txtCommand.Location = new System.Drawing.Point(94, 39);
+            this.txtCommand.Location = new System.Drawing.Point(94, 45);
             this.txtCommand.Name = "txtCommand";
             this.txtCommand.Size = new System.Drawing.Size(621, 26);
             this.txtCommand.TabIndex = 3;
@@ -82,7 +86,7 @@ namespace CmdWrapper
             // lblParameters
             // 
             this.lblParameters.AutoSize = true;
-            this.lblParameters.Location = new System.Drawing.Point(4, 79);
+            this.lblParameters.Location = new System.Drawing.Point(4, 85);
             this.lblParameters.Name = "lblParameters";
             this.lblParameters.Size = new System.Drawing.Size(87, 20);
             this.lblParameters.TabIndex = 4;
@@ -90,7 +94,7 @@ namespace CmdWrapper
             // 
             // txtParameters
             // 
-            this.txtParameters.Location = new System.Drawing.Point(94, 76);
+            this.txtParameters.Location = new System.Drawing.Point(94, 82);
             this.txtParameters.Name = "txtParameters";
             this.txtParameters.Size = new System.Drawing.Size(621, 26);
             this.txtParameters.TabIndex = 5;
@@ -98,7 +102,7 @@ namespace CmdWrapper
             // lblWorkingDirectory
             // 
             this.lblWorkingDirectory.AutoSize = true;
-            this.lblWorkingDirectory.Location = new System.Drawing.Point(6, 115);
+            this.lblWorkingDirectory.Location = new System.Drawing.Point(6, 121);
             this.lblWorkingDirectory.Name = "lblWorkingDirectory";
             this.lblWorkingDirectory.Size = new System.Drawing.Size(131, 20);
             this.lblWorkingDirectory.TabIndex = 6;
@@ -106,14 +110,14 @@ namespace CmdWrapper
             // 
             // txtWorkingDirectory
             // 
-            this.txtWorkingDirectory.Location = new System.Drawing.Point(140, 112);
+            this.txtWorkingDirectory.Location = new System.Drawing.Point(140, 118);
             this.txtWorkingDirectory.Name = "txtWorkingDirectory";
             this.txtWorkingDirectory.Size = new System.Drawing.Size(575, 26);
             this.txtWorkingDirectory.TabIndex = 7;
             // 
             // btnRun
             // 
-            this.btnRun.Location = new System.Drawing.Point(10, 155);
+            this.btnRun.Location = new System.Drawing.Point(10, 161);
             this.btnRun.Name = "btnRun";
             this.btnRun.Size = new System.Drawing.Size(75, 28);
             this.btnRun.TabIndex = 8;
@@ -123,7 +127,7 @@ namespace CmdWrapper
             // 
             // btnStop
             // 
-            this.btnStop.Location = new System.Drawing.Point(91, 155);
+            this.btnStop.Location = new System.Drawing.Point(91, 161);
             this.btnStop.Name = "btnStop";
             this.btnStop.Size = new System.Drawing.Size(75, 28);
             this.btnStop.TabIndex = 9;
@@ -133,7 +137,7 @@ namespace CmdWrapper
             // 
             // btnRemove
             // 
-            this.btnRemove.Location = new System.Drawing.Point(253, 155);
+            this.btnRemove.Location = new System.Drawing.Point(253, 161);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(75, 28);
             this.btnRemove.TabIndex = 10;
@@ -143,7 +147,7 @@ namespace CmdWrapper
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(172, 155);
+            this.btnSave.Location = new System.Drawing.Point(172, 161);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 28);
             this.btnSave.TabIndex = 11;
@@ -154,49 +158,70 @@ namespace CmdWrapper
             // richTextBox
             // 
             this.richTextBox.BackColor = System.Drawing.Color.Black;
-            this.richTextBox.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.richTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.richTextBox.ForeColor = System.Drawing.Color.White;
-            this.richTextBox.Location = new System.Drawing.Point(0, 216);
+            this.richTextBox.Location = new System.Drawing.Point(0, 20);
             this.richTextBox.Name = "richTextBox";
-            this.richTextBox.Size = new System.Drawing.Size(718, 302);
+            this.richTextBox.Size = new System.Drawing.Size(1004, 510);
             this.richTextBox.TabIndex = 12;
             this.richTextBox.Text = "";
             // 
             // lblOutput
             // 
             this.lblOutput.AutoSize = true;
-            this.lblOutput.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lblOutput.Location = new System.Drawing.Point(0, 196);
+            this.lblOutput.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblOutput.Location = new System.Drawing.Point(0, 0);
             this.lblOutput.Name = "lblOutput";
             this.lblOutput.Size = new System.Drawing.Size(60, 20);
             this.lblOutput.TabIndex = 13;
             this.lblOutput.Text = "Output:";
+            // 
+            // panelTop
+            // 
+            this.panelTop.Controls.Add(this.lblCommand);
+            this.panelTop.Controls.Add(this.lblName);
+            this.panelTop.Controls.Add(this.txtName);
+            this.panelTop.Controls.Add(this.btnSave);
+            this.panelTop.Controls.Add(this.txtCommand);
+            this.panelTop.Controls.Add(this.btnRemove);
+            this.panelTop.Controls.Add(this.lblParameters);
+            this.panelTop.Controls.Add(this.btnStop);
+            this.panelTop.Controls.Add(this.txtParameters);
+            this.panelTop.Controls.Add(this.btnRun);
+            this.panelTop.Controls.Add(this.lblWorkingDirectory);
+            this.panelTop.Controls.Add(this.txtWorkingDirectory);
+            this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelTop.Location = new System.Drawing.Point(0, 0);
+            this.panelTop.Name = "panelTop";
+            this.panelTop.Size = new System.Drawing.Size(1004, 325);
+            this.panelTop.TabIndex = 14;
+            // 
+            // panelBottom
+            // 
+            this.panelBottom.Controls.Add(this.richTextBox);
+            this.panelBottom.Controls.Add(this.lblOutput);
+            this.panelBottom.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelBottom.Location = new System.Drawing.Point(0, 325);
+            this.panelBottom.Name = "panelBottom";
+            this.panelBottom.Size = new System.Drawing.Size(1004, 530);
+            this.panelBottom.TabIndex = 15;
             // 
             // CommandPanelComponent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Controls.Add(this.lblOutput);
-            this.Controls.Add(this.richTextBox);
-            this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.btnRemove);
-            this.Controls.Add(this.btnStop);
-            this.Controls.Add(this.btnRun);
-            this.Controls.Add(this.txtWorkingDirectory);
-            this.Controls.Add(this.lblWorkingDirectory);
-            this.Controls.Add(this.txtParameters);
-            this.Controls.Add(this.lblParameters);
-            this.Controls.Add(this.txtCommand);
-            this.Controls.Add(this.lblCommand);
-            this.Controls.Add(this.txtName);
-            this.Controls.Add(this.lblName);
+            this.Controls.Add(this.panelBottom);
+            this.Controls.Add(this.panelTop);
             this.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "CommandPanelComponent";
-            this.Size = new System.Drawing.Size(718, 518);
+            this.Size = new System.Drawing.Size(1004, 855);
+            this.panelTop.ResumeLayout(false);
+            this.panelTop.PerformLayout();
+            this.panelBottom.ResumeLayout(false);
+            this.panelBottom.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -217,5 +242,7 @@ namespace CmdWrapper
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.RichTextBox richTextBox;
         private System.Windows.Forms.Label lblOutput;
+        private System.Windows.Forms.Panel panelTop;
+        private System.Windows.Forms.Panel panelBottom;
     }
 }
