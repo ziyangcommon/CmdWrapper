@@ -36,6 +36,10 @@ namespace CmdWrapper
             {
                 StdOutputReceiver.SendStdErrorReceived(option,args.Data);
             };
+            process.Exited += (sender, args) =>
+            {
+                StdOutputReceiver.SendProcessExited(option,"exited");
+            };
 
             string stdError = null;
             try

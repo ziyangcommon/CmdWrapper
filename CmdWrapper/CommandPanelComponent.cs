@@ -29,10 +29,22 @@ namespace CmdWrapper
         {
             StdOutputReceiver.StdOutputReceived += StdOutputReceiverOnStdOutputReceived;
             StdOutputReceiver.StdErrorReceived += StdOutputReceiverOnStdErrorReceived;
+            StdOutputReceiver.ProcessExited += StdOutputReceiverOnProcessExited;
             this.txtName.Text = this.Option.Name;
             this.txtCommand.Text = this.Option.Command;
             this.txtParameters.Text = this.Option.Parameters;
             this.txtWorkingDirectory.Text = this.Option.WorkingDirectory;
+        }
+
+        private void StdOutputReceiverOnProcessExited(Option option, string output)
+        {
+            this.Invoke(new Action(() =>
+            {
+                if (string.IsNullOrEmpty(output)) return;
+                this.richTextBox.SelectionColor= Color.White;
+                this.richTextBox.SelectionBackColor = Color.Black;
+                SetOutputText(output);
+            }));
         }
 
         private void StdOutputReceiverOnStdErrorReceived(Option option, string output)
